@@ -1,26 +1,51 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using WebshopMVC.UtilsMVC;
 
 namespace WebshopMVC.Controllers.Menu
 {
-    class BookMenuController
+    public static class BookMenuController
     {
         public static void BookMenu()
         {
-            bool isRunning = true;
-            while (isRunning)
+            bool isBookMenuRunning = true;
+            while (isBookMenuRunning)
             {
-            ASCII.BookMenuASCII();
-            Console.WriteLine("[1] List all books");
-            Console.WriteLine("[2] Search books by title");
-            Console.WriteLine("[3] Search books by author");
-            Console.WriteLine("[4] Get book information by Id\n");
-            Console.WriteLine("[5] List all categories");
-            Console.WriteLine("[6] Search for categories");
-            Console.WriteLine("[7] List all books in category");
-            Console.WriteLine("[8] List all books in category currently in stock\n\n");
+                Console.Clear();
+                ASCII.BookMenuASCII();
+                Console.WriteLine("[1] List all books");
+                Console.WriteLine("[2] Search books by title");
+                Console.WriteLine("[3] Search books by author");
+                Console.WriteLine("[4] Get book information by Id\n");
+                
+                Console.WriteLine("[5] Go back to main menu");
+                Console.WriteLine("[6] Quit application");
+
+
+                int.TryParse(Console.ReadLine(), out var bookMenuInput);
+
+                switch (bookMenuInput)
+                {
+                    case 1:
+                        BookController.ListAllBooks();
+                        break;
+                    case 2:
+                        BookController.GetBooksByKeyword();
+                        break;
+                    case 3:
+                        BookController.GetBooksByAuthor();
+                        break;
+                    case 4:
+                        BookController.GetBookById();
+                        break;
+                    case 5:
+                        isBookMenuRunning = false;
+                        
+                        break;
+                    case 6:
+                        isBookMenuRunning = false;
+                        MainMenuController.isMainMenuRunning = false;
+                        break;
+                }
             }
         }
     }

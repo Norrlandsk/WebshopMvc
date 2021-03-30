@@ -2,19 +2,21 @@
 using WebshopAPI;
 using WebshopAPI.Models;
 using WebshopAPI.Utils;
+using WebshopMVC.Controllers.Menu;
 using WebshopMVC.UtilsMVC;
 
 namespace WebshopMVC.Controllers
 {
     internal class MainMenuController
     {
+          public static bool isMainMenuRunning = true;
         public static void MainMenu(User user)
         {
-            bool isRunning = true;
 
-            while (isRunning)
+            while (isMainMenuRunning)
             {
                 user = Startup.sessionCookie;
+                Console.Clear();
                 ASCII.MainMenuASCII();
 
                 //If user is logged out
@@ -32,11 +34,11 @@ namespace WebshopMVC.Controllers
                     switch (mainMenuLoggedOutInput)
                     {
                         case 1:
-                            
+                            BookMenuController.BookMenu();
                             break;
 
                         case 2:
-                            
+                            CategoryMenuController.CategoryMenu();
                             break;
 
                         case 3:
@@ -52,7 +54,7 @@ namespace WebshopMVC.Controllers
                             break;
 
                         case 6:
-                            isRunning = false;
+                            isMainMenuRunning = false;
                             break;
                     }
                 }
@@ -71,11 +73,11 @@ namespace WebshopMVC.Controllers
                     switch (mainMenuLoggedInInput)
                     {
                         case 1:
-                            
+                            BookMenuController.BookMenu();
                             break;
 
                         case 2:
-                            
+                            CategoryMenuController.CategoryMenu();
                             break;
 
                         case 3:
@@ -88,7 +90,7 @@ namespace WebshopMVC.Controllers
                             break;
 
                         case 5:
-                            isRunning = false;
+                            isMainMenuRunning = false;
                             break;
                     }
                 }
@@ -108,11 +110,11 @@ namespace WebshopMVC.Controllers
                     switch (mainMenuAdminInput)
                     {
                         case 1:
-                            
+                            BookMenuController.BookMenu();
                             break;
 
                         case 2:
-                            
+                            CategoryMenuController.CategoryMenu();
                             break;
 
                         case 3:
@@ -120,18 +122,15 @@ namespace WebshopMVC.Controllers
                             break;
 
                         case 4:
-                            UserController.RegisterNewUser();
+                            
                             break;
 
                         case 5:
-                            break;
-
-                        case 6:
                             UserController.LogOutUser(user);
                             break;
 
-                        case 7:
-                            isRunning = false;
+                        case 6:
+                            isMainMenuRunning = false;
                             break;
                     }
                 }
