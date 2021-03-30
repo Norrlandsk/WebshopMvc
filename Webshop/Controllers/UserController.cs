@@ -112,5 +112,10 @@ namespace WebshopMVC.Controllers
 
             } while (isBookPurchased==false);
         }
+        public static string SendPing(int userId)
+        {
+            var api = new API();
+            return api.Ping(userId);
+        }
     }
 }
