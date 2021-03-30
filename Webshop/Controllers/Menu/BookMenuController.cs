@@ -21,7 +21,6 @@ namespace WebshopMVC.Controllers.Menu
             Console.WriteLine("[6] Search for categories");
             Console.WriteLine("[7] List all books in category");
             Console.WriteLine("[8] List all books in category currently in stock\n\n");
-
             }
         }
     }

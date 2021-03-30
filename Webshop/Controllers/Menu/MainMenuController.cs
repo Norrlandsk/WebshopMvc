@@ -32,11 +32,11 @@ namespace WebshopMVC.Controllers
                     switch (mainMenuLoggedOutInput)
                     {
                         case 1:
-                            BookMenu();
+                            
                             break;
 
                         case 2:
-                            CatMenu();
+                            
                             break;
 
                         case 3:
@@ -71,11 +71,11 @@ namespace WebshopMVC.Controllers
                     switch (mainMenuLoggedInInput)
                     {
                         case 1:
-                            BookMenu();
+                            
                             break;
 
                         case 2:
-                            CatMenu();
+                            
                             break;
 
                         case 3:
@@ -108,11 +108,11 @@ namespace WebshopMVC.Controllers
                     switch (mainMenuAdminInput)
                     {
                         case 1:
-                            BookMenu();
+                            
                             break;
 
                         case 2:
-                            CatMenu();
+                            
                             break;
 
                         case 3:
