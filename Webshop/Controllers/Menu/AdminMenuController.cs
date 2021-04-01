@@ -77,19 +77,23 @@ namespace WebshopMVC.Controllers.Menu
                         break;
 
                     case 2:
-                        AdminBookController.
+                        AdminBookController.SetAmount(admin);
                         break;
 
                     case 3:
+                        AdminBookController.UpdateBook(admin);
                         break;
 
                     case 4:
+                        AdminBookController.DeleteBook(admin);
                         break;
 
                     case 5:
+                        AdminBookController.ListAllSoldBooks(admin);
                         break;
 
                     case 6:
+                        AdminBookController.SumOfSoldBooks(admin);
                         break;
 
                     case 7:
@@ -120,10 +124,11 @@ namespace WebshopMVC.Controllers.Menu
             Console.WriteLine("[4] Go back to main menu");
             Console.WriteLine("[5] Quit application");
 
-            int.TryParse(Console.ReadLine(), out var AdminMenuInput);
+            int.TryParse(Console.ReadLine(), out var AdminCategoryMenuInput);
 
-            switch (AdminMenuInput)
+            switch (AdminCategoryMenuInput)
             {
+
             }
         }
 
