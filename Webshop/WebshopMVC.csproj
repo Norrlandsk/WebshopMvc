@@ -9,8 +9,4 @@
     <ProjectReference Include="..\..\WebshopAPI\WebshopAPI\WebshopAPI.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ControllersAdmin\" />
-  </ItemGroup>
-
 </Project>

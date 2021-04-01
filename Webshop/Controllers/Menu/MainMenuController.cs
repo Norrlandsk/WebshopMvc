@@ -122,7 +122,7 @@ namespace WebshopMVC.Controllers
                             break;
 
                         case 4:
-                            
+                            AdminMenuController.AdminMainMenu(user);
                             break;
 
                         case 5:

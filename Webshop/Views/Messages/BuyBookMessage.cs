@@ -6,8 +6,8 @@ namespace WebshopMVC.Views.Messages
     {
         public static void UserNotLoggedIn()
         {
-            Console.WriteLine("You have to be logged in to buy a book!\n" +
-                "Please login or register a new user.");
+            Console.WriteLine("You have to be logged in to purchase a book!\n" +
+                "Please login or register a new user");
             Prompts.ClearAndContinue();
         }
 

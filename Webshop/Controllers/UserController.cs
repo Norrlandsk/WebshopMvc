@@ -105,6 +105,7 @@ namespace WebshopMVC.Controllers
                     }
                     else
                     {
+
                         BuyBookMessage.Success();
                         isBookPurchased = true;
                     }

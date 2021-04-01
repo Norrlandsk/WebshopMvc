@@ -29,15 +29,15 @@ namespace WebshopMVC.Controllers.Menu
                         break;
 
                     case 2:
-                        
+                        CategoryController.GetCategoriesByKeyword();
                         break;
 
                     case 3:
-                       
+                        CategoryController.GetBooksByCategoryId();
                         break;
 
                     case 4:
-                        
+                        CategoryController.GetAvailableBooksByCategoryId();
                         break;
 
                     case 5:
