@@ -116,19 +116,49 @@ namespace WebshopMVC.Controllers.Menu
 
         public static void AdminCategoryMenu(User admin)
         {
-            Console.Clear();
-            ASCII.AdminCategoryMenuASCII();
-            Console.WriteLine("[1] Handle books");
-            Console.WriteLine("[2] Handle categories");
-            Console.WriteLine("[3] Handle users");
-            Console.WriteLine("[4] Go back to main menu");
-            Console.WriteLine("[5] Quit application");
+            bool isAdminCategoryMenuRunning = true;
 
-            int.TryParse(Console.ReadLine(), out var AdminCategoryMenuInput);
-
-            switch (AdminCategoryMenuInput)
+            while (isAdminCategoryMenuRunning)
             {
+                Console.Clear();
+                ASCII.AdminCategoryMenuASCII();
+                Console.WriteLine("[1] Add category");
+                Console.WriteLine("[2] Add book to category");
+                Console.WriteLine("[3] Update category");
+                Console.WriteLine("[4] Delete category");
+                Console.WriteLine("[5] Go back to main admin menu");
+                Console.WriteLine("[6] Go back to main menu");
+                Console.WriteLine("[7] Quit application");
 
+                int.TryParse(Console.ReadLine(), out var AdminCategoryMenuInput);
+
+                switch (AdminCategoryMenuInput)
+                {
+                    case 1:
+                        AdminCategoryController.AddCategory(admin);
+                        break;
+                    case 2:
+                        AdminCategoryController.AddBookToCategory(admin);
+                        break;
+                    case 3:
+                        AdminCategoryController.UpdateCategory(admin);
+                        break;
+                    case 4:
+                        AdminCategoryController.DeleteCategory(admin);
+                        break;
+                    case 5:
+                        isAdminCategoryMenuRunning = false;
+                        break;
+                    case 6:
+                        isAdminCategoryMenuRunning = false;
+                        isAdminMenuRunning = false;
+                        break;
+                    case 7:
+                        isAdminCategoryMenuRunning = false;
+                        isAdminMenuRunning = false;
+                        MainMenuController.isMainMenuRunning = false;
+                        break;
+                }
             }
         }
 
