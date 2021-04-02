@@ -201,27 +201,27 @@ namespace WebshopMVC.Controllers.Menu
                         break;
 
                     case 3:
-
+                        AdminUserController.AddUser(admin);
                         break;
 
                     case 4:
-
+                        AdminUserController.BestCostumer(admin);
                         break;
 
                     case 5:
-
+                        AdminUserController.PromoteUser(admin);
                         break;
 
                     case 6:
-
+                        AdminUserController.DemoteUser(admin);
                         break;
 
                     case 7:
-
+                        AdminUserController.ActivateUser(admin);
                         break;
 
                     case 8:
-
+                        AdminUserController.DeactivateUser(admin);
                         break;
 
                     case 9:
