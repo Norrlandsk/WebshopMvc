@@ -6,6 +6,7 @@ using WebshopAPI.Utils;
 using WebshopMVC.Controllers;
 using WebshopMVC.UtilsMVC.Converters;
 using WebshopMVC.Views;
+using WebshopMVC.Views.Messages;
 using WebshopMVC.Views.Messages.Admin;
 
 namespace WebshopMVC.ControllersAdmin
@@ -41,7 +42,7 @@ namespace WebshopMVC.ControllersAdmin
                 var result = api.AddBook(admin.Id, title, author, price, amount);
                 if (result == false)
                 {
-                    var input = AddBookMessage.Error();
+                    var input = ErrorMessage.ErrorAbort("adding a new book", "you entered incorrect data");
                     if (input != "")
                     {
                         Console.Clear();
@@ -50,7 +51,7 @@ namespace WebshopMVC.ControllersAdmin
                 }
                 else
                 {
-                    AddBookMessage.Success();
+                    SuccessMessage.SuccessWithString("Book added to inventory!");
                     isBookAdded = true;
                     UserController.SendPing(admin.Id);
                 }
@@ -80,7 +81,7 @@ namespace WebshopMVC.ControllersAdmin
                 var result = api.SetAmount(admin.Id, bookId, amount);
                 if (result.isAmountSet == false)
                 {
-                    var input = SetAmountMessage.Error();
+                    var input = ErrorMessage.ErrorAbort("setting the amount","you entered incorrect data");
                     if (input != "")
                     {
                         Console.Clear();
@@ -89,7 +90,7 @@ namespace WebshopMVC.ControllersAdmin
                 }
                 else
                 {
-                    SetAmountMessage.Success(result.amount);
+                    SuccessMessage.SuccessWithInt("Amount set to",result.amount);
                     isAmountSet = true;
                     UserController.SendPing(admin.Id);
                 }
@@ -125,7 +126,7 @@ namespace WebshopMVC.ControllersAdmin
                 var result = api.UpdateBook(admin.Id, bookId, title, author, price);
                 if (result == false)
                 {
-                    var input = UpdateBookMessage.Error();
+                    var input = ErrorMessage.ErrorAbort("updating the book","you entered incorrect data");
                     if (input != "")
                     {
                         Console.Clear();
@@ -134,7 +135,7 @@ namespace WebshopMVC.ControllersAdmin
                 }
                 else
                 {
-                    UpdateBookMessage.Success();
+                    SuccessMessage.SuccessWithString("Book updated!");
                     isBookUpdated = true;
                     UserController.SendPing(admin.Id);
                 }
@@ -161,7 +162,7 @@ namespace WebshopMVC.ControllersAdmin
                 var result = api.DeleteBook(admin.Id, bookId);
                 if (result == false)
                 {
-                    var input = DeleteBookMessage.Error();
+                    var input = ErrorMessage.ErrorAbort("deleting the book","you entered incorrect data");
                     if (input != "")
                     {
                         Console.Clear();
@@ -170,7 +171,7 @@ namespace WebshopMVC.ControllersAdmin
                 }
                 else
                 {
-                    DeleteBookMessage.Success();
+                    SuccessMessage.SuccessWithString("Book deleted!");
                     isBookDeleted = true;
                     UserController.SendPing(admin.Id);
                 }
@@ -196,7 +197,7 @@ namespace WebshopMVC.ControllersAdmin
                 var result = api.SoldItems(admin.Id);
                 if (result == null)
                 {
-                    var input = SoldItemsMessage.Error();
+                    ErrorMessage.ErrorNoAbort("retrieving the list of sold books","the database is corrupt/empty");
                 }
                 else
                 {
@@ -227,11 +228,11 @@ namespace WebshopMVC.ControllersAdmin
                 var result = api.MoneyEarned(admin.Id);
                 if (result == null)
                 {
-                    SumOfSoldBooksMessage.Error();
+                    ErrorMessage.ErrorNoAbort("calculating the sum of all purchases","the database is corrupt/empty");
                 }
                 else
                 {
-                    SumOfSoldBooksMessage.Success(result);
+                    SuccessMessage.SuccessWithInt("The sum of all purchases is",result.Value);
                     UserController.SendPing(admin.Id);
                     isSumCalculated = true;
                 }

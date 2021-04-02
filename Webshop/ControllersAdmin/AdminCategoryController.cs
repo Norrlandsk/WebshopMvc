@@ -3,6 +3,7 @@ using WebshopAPI;
 using WebshopAPI.Models;
 using WebshopAPI.Utils;
 using WebshopMVC.Controllers;
+using WebshopMVC.Views.Messages;
 using WebshopMVC.Views.Messages.Admin;
 using WebshopMVC.Views.Messages.Admin.CategoryMessages;
 
@@ -31,7 +32,7 @@ namespace WebshopMVC.ControllersAdmin
                 var result = api.AddCategory(admin.Id, categoryName);
                 if (result == false)
                 {
-                    var input = AddCategoryMessage.Error();
+                    var input = ErrorMessage.ErrorAbort("creating a new category","there already is a category with that name");
                     if (input != "")
                     {
                         Console.Clear();
@@ -40,7 +41,7 @@ namespace WebshopMVC.ControllersAdmin
                 }
                 else
                 {
-                    AddCategoryMessage.Success();
+                    SuccessMessage.SuccessWithString("A new category was created with the name",$"{categoryName}");
                     isCategoryCreated = true;
                     UserController.SendPing(admin.Id);
                 }
@@ -71,7 +72,7 @@ namespace WebshopMVC.ControllersAdmin
                 var result = api.AddBookToCategory(admin.Id, bookId, categoryId);
                 if (result == false)
                 {
-                    var input = AddBookToCategoryMessage.Error();
+                    var input = ErrorMessage.ErrorAbort("adding a book to a category","you entered incorrect data");
                     if (input != "")
                     {
                         Console.Clear();
@@ -80,7 +81,7 @@ namespace WebshopMVC.ControllersAdmin
                 }
                 else
                 {
-                    AddBookToCategoryMessage.Success();
+                    SuccessMessage.SuccessWithString("Book assigned to category");
                     isBookAdded = true;
                     UserController.SendPing(admin.Id);
                 }
@@ -111,7 +112,7 @@ namespace WebshopMVC.ControllersAdmin
                 var result = api.UpdateCategory(admin.Id, categoryId, name);
                 if (result == false)
                 {
-                    var input = UpdateCategoryMessage.Error();
+                    var input = ErrorMessage.ErrorAbort("updating a category","you entered incorrect data");
                     if (input != "")
                     {
                         Console.Clear();
@@ -120,7 +121,7 @@ namespace WebshopMVC.ControllersAdmin
                 }
                 else
                 {
-                    UpdateCategoryMessage.Success();
+                    SuccessMessage.SuccessWithString("Category updated");
                     isCategoryUpdated = true;
                     UserController.SendPing(admin.Id);
                 }
@@ -147,7 +148,7 @@ namespace WebshopMVC.ControllersAdmin
                 var result = api.DeleteCategory(admin.Id, categoryId);
                 if (result == false)
                 {
-                    var input = DeleteCategoryMessage.Error();
+                    var input = ErrorMessage.ErrorAbort("deleting the category","you entered incorrect data");
                     if (input != "")
                     {
                         Console.Clear();

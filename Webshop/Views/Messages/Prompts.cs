@@ -13,12 +13,6 @@ namespace WebshopMVC.Views.Messages
             Console.Clear();
         }
 
-        public static void Continue()
-        {
-            Console.WriteLine("\nPress enter to continue...");
-            Console.ReadLine();
-        }
-
         public static string Abort()
         {
             Console.WriteLine("\nPress enter to try again or x to abort...");

@@ -9,7 +9,7 @@ namespace WebshopMVC.Views.Messages.Admin
         public static string Error()
         {
             Console.Clear();
-            Console.WriteLine("Something went when deleting a book! Either your session timed out and you have to log in again, \n" +
+            Console.WriteLine("Something went wrong when deleting a book! Either your session timed out and you have to log in again, \n" +
                 "or you entered incorrect data");
             return Prompts.Abort();
         }

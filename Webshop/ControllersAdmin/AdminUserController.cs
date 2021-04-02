@@ -6,6 +6,7 @@ using WebshopAPI.Utils;
 using WebshopMVC.Controllers;
 using WebshopMVC.UtilsMVC.Converters;
 using WebshopMVC.Views;
+using WebshopMVC.Views.Messages;
 using WebshopMVC.Views.Messages.Admin;
 using WebshopMVC.Views.Messages.Admin.UserMessages;
 
@@ -32,7 +33,7 @@ namespace WebshopMVC.ControllersAdmin
                 var result = api.ListUsers(admin.Id);
                 if (result == null)
                 {
-                    ListAllUsersMessage.Error();
+                    ErrorMessage.ErrorNoAbort("retrieving a list of users","the database is empty/corrupt");
                     break;
                 }
                 else
@@ -66,7 +67,7 @@ namespace WebshopMVC.ControllersAdmin
                 var result = api.FindUser(admin.Id, keyword);
                 if (result.Count < 1)
                 {
-                    var input = FindUserMessage.Error();
+                    var input = ErrorMessage.ErrorAbort("retrieving users","the database is corrupt/empty, or your search term gave no matches");
                     if (input != "")
                     {
                         Console.Clear();
@@ -107,7 +108,7 @@ namespace WebshopMVC.ControllersAdmin
                 var result = api.AddUser(admin.Id, name, password);
                 if (result == false)
                 {
-                    var input = AddUserMessage.Error();
+                    var input = ErrorMessage.ErrorAbort("adding a user","or a user with that name already exists");
                     if (input != "")
                     {
                         Console.Clear();
@@ -116,7 +117,7 @@ namespace WebshopMVC.ControllersAdmin
                 }
                 else
                 {
-                    AddUserMessage.Success();
+                    SuccessMessage.SuccessWithString("A new user was added with name",$"{name} and password {password}");
 
                     UserController.SendPing(admin.Id);
                     isUserCreated = true;
@@ -143,7 +144,7 @@ namespace WebshopMVC.ControllersAdmin
                 var result = api.BestCostumer(admin.Id);
                 if (result == null)
                 {
-                    BestCostumerMessage.Error();
+                    ErrorMessage.ErrorNoAbort("retrieving best costumer","the database is empty/corrupted");
                     break;
                 }
                 else
@@ -175,7 +176,7 @@ namespace WebshopMVC.ControllersAdmin
                 var result = api.Promote(admin.Id, userId);
                 if (result == false)
                 {
-                    var input = PromoteUserMessage.Error();
+                    var input = ErrorMessage.ErrorAbort("promoting a user","you entered incorrect data");
                     if (input != "")
                     {
                         Console.Clear();
@@ -184,7 +185,7 @@ namespace WebshopMVC.ControllersAdmin
                 }
                 else
                 {
-                    PromoteUserMessage.Success();
+                    SuccessMessage.SuccessWithString("User now has administrator privileges");
 
                     UserController.SendPing(admin.Id);
                     isUserPromoted = true;
@@ -211,7 +212,7 @@ namespace WebshopMVC.ControllersAdmin
                 var result = api.Demote(admin.Id, userId);
                 if (result == false)
                 {
-                    var input = DemoteUserMessage.Error();
+                    var input = ErrorMessage.ErrorAbort("demoting a user","you entered incorrect data");
                     if (input != "")
                     {
                         Console.Clear();
@@ -220,7 +221,7 @@ namespace WebshopMVC.ControllersAdmin
                 }
                 else
                 {
-                    DemoteUserMessage.Success();
+                    SuccessMessage.SuccessWithString("User now has lost administrator privileges");
 
                     UserController.SendPing(admin.Id);
                     isUserDemoted = true;
@@ -247,7 +248,7 @@ namespace WebshopMVC.ControllersAdmin
                 var result = api.ActivateUser(admin.Id, userId);
                 if (result == false)
                 {
-                    var input = DemoteUserMessage.Error();
+                    var input = ErrorMessage.ErrorAbort("activating a user","you entered incorrect data");
                     if (input != "")
                     {
                         Console.Clear();
@@ -256,7 +257,7 @@ namespace WebshopMVC.ControllersAdmin
                 }
                 else
                 {
-                    DemoteUserMessage.Success();
+                    SuccessMessage.SuccessWithString("User is now activated");
 
                     UserController.SendPing(admin.Id);
                     isUserActivated = true;
@@ -283,7 +284,7 @@ namespace WebshopMVC.ControllersAdmin
                 var result = api.InactivateUser(admin.Id, userId);
                 if (result == false)
                 {
-                    var input = DeactivateUserMessage.Error();
+                    var input = ErrorMessage.ErrorAbort("deactivating a user", "you entered incorrect data");
                     if (input != "")
                     {
                         Console.Clear();
@@ -292,7 +293,7 @@ namespace WebshopMVC.ControllersAdmin
                 }
                 else
                 {
-                    DeactivateUserMessage.Success();
+                    SuccessMessage.SuccessWithString("User is now deactivated");
 
                     UserController.SendPing(admin.Id);
                     isUserDeactivated = true;
