@@ -51,11 +51,11 @@ namespace WebshopMVC.Controllers
             do
             {
                 Console.Clear();
-                Console.Write("Enter new user name:\n");
+                Console.Write("Enter new user name: \n");
                 var userName = Console.ReadLine();
-                Console.Write("Enter new password:\n");
+                Console.Write("Enter new password: \n");
                 var password = Console.ReadLine();
-                Console.Write("Enter new password again:\n");
+                Console.Write("Enter new password again: \n");
                 var passwordVerify = Console.ReadLine();
                 var result = api.Register(userName, password, passwordVerify);
 

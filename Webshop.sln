@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31105.61
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebshopMVC", "Webshop\WebshopMVC.csproj", "{3461826D-DABC-49E8-819E-31D8B0EB9E45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebshopMVC", "Webshop\WebshopMVC.csproj", "{3461826D-DABC-49E8-819E-31D8B0EB9E45}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebshopAPI", "..\WebshopAPI\WebshopAPI\WebshopAPI.csproj", "{2BF458FF-E551-4113-8333-0B8AFDBE0810}"
 EndProject
