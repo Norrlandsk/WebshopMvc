@@ -137,22 +137,28 @@ namespace WebshopMVC.Controllers.Menu
                     case 1:
                         AdminCategoryController.AddCategory(admin);
                         break;
+
                     case 2:
                         AdminCategoryController.AddBookToCategory(admin);
                         break;
+
                     case 3:
                         AdminCategoryController.UpdateCategory(admin);
                         break;
+
                     case 4:
                         AdminCategoryController.DeleteCategory(admin);
                         break;
+
                     case 5:
                         isAdminCategoryMenuRunning = false;
                         break;
+
                     case 6:
                         isAdminCategoryMenuRunning = false;
                         isAdminMenuRunning = false;
                         break;
+
                     case 7:
                         isAdminCategoryMenuRunning = false;
                         isAdminMenuRunning = false;
@@ -164,18 +170,75 @@ namespace WebshopMVC.Controllers.Menu
 
         public static void AdminUserMenu(User admin)
         {
-            Console.Clear();
-            ASCII.AdminUserMenuASCII();
-            Console.WriteLine("[1] Handle books");
-            Console.WriteLine("[2] Handle categories");
-            Console.WriteLine("[3] Handle users");
-            Console.WriteLine("[4] Go back to main menu");
-            Console.WriteLine("[5] Quit application");
+            bool isAdminUserMenuRunning = true;
 
-            int.TryParse(Console.ReadLine(), out var AdminMenuInput);
-
-            switch (AdminMenuInput)
+            while (isAdminUserMenuRunning)
             {
+                Console.Clear();
+                ASCII.AdminUserMenuASCII();
+                Console.WriteLine("[1] List all users");
+                Console.WriteLine("[2] Find user");
+                Console.WriteLine("[3] Add user");
+                Console.WriteLine("[4] Show best costumer");
+                Console.WriteLine("[5] Promote user");
+                Console.WriteLine("[6] Demote user");
+                Console.WriteLine("[7] Activate user");
+                Console.WriteLine("[8] Deactivate user");
+                Console.WriteLine("[9] Go back to main admin menu");
+                Console.WriteLine("[10] Go back to main menu");
+                Console.WriteLine("[11] Quit application");
+
+                int.TryParse(Console.ReadLine(), out var AdminUserMenuInput);
+
+                switch (AdminUserMenuInput)
+                {
+                    case 1:
+                        AdminUserController.ListAllUsers(admin);
+                        break;
+
+                    case 2:
+                        AdminUserController.FindUser(admin);
+                        break;
+
+                    case 3:
+
+                        break;
+
+                    case 4:
+
+                        break;
+
+                    case 5:
+
+                        break;
+
+                    case 6:
+
+                        break;
+
+                    case 7:
+
+                        break;
+
+                    case 8:
+
+                        break;
+
+                    case 9:
+                        isAdminUserMenuRunning = false;
+                        break;
+
+                    case 10:
+                        isAdminUserMenuRunning = false;
+                        isAdminMenuRunning = false;
+                        break;
+
+                    case 11:
+                        isAdminUserMenuRunning = false;
+                        isAdminMenuRunning = false;
+                        MainMenuController.isMainMenuRunning = false;
+                        break;
+                }
             }
         }
     }
