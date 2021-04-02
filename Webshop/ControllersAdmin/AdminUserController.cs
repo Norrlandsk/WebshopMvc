@@ -8,7 +8,7 @@ using WebshopMVC.UtilsMVC.Converters;
 using WebshopMVC.Views;
 using WebshopMVC.Views.Messages;
 using WebshopMVC.Views.Messages.Admin;
-using WebshopMVC.Views.Messages.Admin.UserMessages;
+
 
 namespace WebshopMVC.ControllersAdmin
 {

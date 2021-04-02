@@ -51,7 +51,7 @@ namespace WebshopMVC.ControllersAdmin
                 }
                 else
                 {
-                    SuccessMessage.SuccessWithString("Book added to inventory!");
+                    SuccessMessage.SuccessWithString("Book added to inventory");
                     isBookAdded = true;
                     UserController.SendPing(admin.Id);
                 }
@@ -135,7 +135,7 @@ namespace WebshopMVC.ControllersAdmin
                 }
                 else
                 {
-                    SuccessMessage.SuccessWithString("Book updated!");
+                    SuccessMessage.SuccessWithString("Book updated");
                     isBookUpdated = true;
                     UserController.SendPing(admin.Id);
                 }
@@ -171,7 +171,7 @@ namespace WebshopMVC.ControllersAdmin
                 }
                 else
                 {
-                    SuccessMessage.SuccessWithString("Book deleted!");
+                    SuccessMessage.SuccessWithString("Book deleted");
                     isBookDeleted = true;
                     UserController.SendPing(admin.Id);
                 }

@@ -5,7 +5,7 @@ using WebshopAPI.Utils;
 using WebshopMVC.Controllers;
 using WebshopMVC.Views.Messages;
 using WebshopMVC.Views.Messages.Admin;
-using WebshopMVC.Views.Messages.Admin.CategoryMessages;
+
 
 namespace WebshopMVC.ControllersAdmin
 {
@@ -157,7 +157,7 @@ namespace WebshopMVC.ControllersAdmin
                 }
                 else
                 {
-                    DeleteCategoryMessage.Success();
+                    SuccessMessage.SuccessWithString("Category deleted");
                     isCategoryDeleted = true;
                     UserController.SendPing(admin.Id);
                 }
