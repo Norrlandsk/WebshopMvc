@@ -5,7 +5,7 @@ namespace WebshopMVC.Views.Messages
     /// <summary>
     /// Class for handling messages used in Register method.
     /// </summary>
-    internal static class RegisterMessage
+    internal class RegisterMessage
     {
         /// <summary>
         /// Prints message indicating that registration was successful.

@@ -6,7 +6,7 @@ namespace WebshopMVC.Controllers.Menu
     /// <summary>
     /// Menu class for handling book data, no login required
     /// </summary>
-    public static class BookMenuController
+    public class BookMenuController
     {
         /// <summary>
         /// Menu for handling book data

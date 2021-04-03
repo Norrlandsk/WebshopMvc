@@ -6,7 +6,7 @@ namespace WebshopMVC.Views.Messages
     /// <summary>
     /// Class for handling messages used in Logout method
     /// </summary>
-    public static class LogoutMessage
+    public class LogoutMessage
     {
         /// <summary>
         /// Prints message when user is logged out

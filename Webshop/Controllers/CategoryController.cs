@@ -10,7 +10,7 @@ namespace WebshopMVC.Controllers
     /// <summary>
     /// Controller class for handling Category object data
     /// </summary>
-    public static class CategoryController
+    public class CategoryController
     {
         /// <summary>
         /// Retrieves all Category objects present in database

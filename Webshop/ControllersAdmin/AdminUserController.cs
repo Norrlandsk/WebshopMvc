@@ -14,7 +14,7 @@ namespace WebshopMVC.ControllersAdmin
     /// <summary>
     /// Admin menu class for handling User object data
     /// </summary>
-    public static class AdminUserController
+    public class AdminUserController
     {
         /// <summary>
         /// Retrieves all Users present in database

@@ -6,7 +6,7 @@ namespace WebshopMVC.UtilsMVC.Converters
     /// <summary>
     /// Class for converting List of SoldBook objects to List of List of base class objects.
     /// </summary>
-    public static class SoldBooksConverters
+    public class SoldBooksConverters
     {
         /// <summary>
         /// Converts List of SoldBook objects to List of List of base class objects.

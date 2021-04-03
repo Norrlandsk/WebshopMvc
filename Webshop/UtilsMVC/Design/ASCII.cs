@@ -5,7 +5,7 @@ namespace WebshopMVC.UtilsMVC
     /// <summary>
     /// Class for containing ASCII designs used in menu's
     /// </summary>
-    public static class ASCII
+    public class ASCII
     {
         /// <summary>
         /// Prints Main menu ASCII
