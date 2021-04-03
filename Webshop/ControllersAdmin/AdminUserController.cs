@@ -9,11 +9,18 @@ using WebshopMVC.Views;
 using WebshopMVC.Views.Messages;
 using WebshopMVC.Views.Messages.Admin;
 
-
 namespace WebshopMVC.ControllersAdmin
 {
+    /// <summary>
+    /// Admin menu class for handling User object data
+    /// </summary>
     public static class AdminUserController
     {
+        /// <summary>
+        /// Retrieves all Users present in database
+        /// User object as parameter for handling session timer and ping function
+        /// </summary>
+        /// <param name="admin"></param>
         public static List<List<object>> ListAllUsers(User admin)
         {
             List<List<object>> userListData = new List<List<object>>();
@@ -33,7 +40,7 @@ namespace WebshopMVC.ControllersAdmin
                 var result = api.ListUsers(admin.Id);
                 if (result == null)
                 {
-                    ErrorMessage.ErrorNoAbort("retrieving a list of users","the database is empty/corrupt");
+                    ErrorMessage.ErrorNoAbort("retrieving a list of users", "the database is empty/corrupt");
                     break;
                 }
                 else
@@ -47,6 +54,11 @@ namespace WebshopMVC.ControllersAdmin
             return UserView.UserListReader(userListData);
         }
 
+        /// <summary>
+        /// Retrieves all Users matching search term based on User.Name
+        /// User object as parameter for handling session timer and ping function
+        /// </summary>
+        /// <param name="admin"></param>
         public static List<List<object>> FindUser(User admin)
         {
             List<List<object>> userListData = new List<List<object>>();
@@ -67,7 +79,7 @@ namespace WebshopMVC.ControllersAdmin
                 var result = api.FindUser(admin.Id, keyword);
                 if (result.Count < 1)
                 {
-                    var input = ErrorMessage.ErrorAbort("retrieving users","the database is corrupt/empty, or your search term gave no matches");
+                    var input = ErrorMessage.ErrorAbort("retrieving users", "the database is corrupt/empty, or your search term gave no matches");
                     if (input != "")
                     {
                         Console.Clear();
@@ -85,6 +97,11 @@ namespace WebshopMVC.ControllersAdmin
             return UserView.UserListReader(userListData);
         }
 
+        /// <summary>
+        /// Creates a new User object.
+        /// User object as parameter for handling session timer and ping function.
+        /// </summary>
+        /// <param name="admin"></param>
         public static void AddUser(User admin)
         {
             bool isUserCreated = false;
@@ -108,7 +125,7 @@ namespace WebshopMVC.ControllersAdmin
                 var result = api.AddUser(admin.Id, name, password);
                 if (result == false)
                 {
-                    var input = ErrorMessage.ErrorAbort("adding a user","or a user with that name already exists");
+                    var input = ErrorMessage.ErrorAbort("adding a user", "or a user with that name already exists");
                     if (input != "")
                     {
                         Console.Clear();
@@ -117,7 +134,7 @@ namespace WebshopMVC.ControllersAdmin
                 }
                 else
                 {
-                    SuccessMessage.SuccessWithString("A new user was added with name",$"{name} and password {password}");
+                    SuccessMessage.SuccessWithString("A new user was added with name", $"{name} and password {password}");
 
                     UserController.SendPing(admin.Id);
                     isUserCreated = true;
@@ -125,6 +142,11 @@ namespace WebshopMVC.ControllersAdmin
             } while (isUserCreated == false);
         }
 
+        /// <summary>
+        /// Retrieves User that have purchased most books.
+        /// User object as parameter for handling session timer and ping function.
+        /// </summary>
+        /// <param name="admin"></param>
         public static List<List<object>> BestCostumer(User admin)
         {
             List<List<object>> bestCostumer = new List<List<object>>();
@@ -144,7 +166,7 @@ namespace WebshopMVC.ControllersAdmin
                 var result = api.BestCostumer(admin.Id);
                 if (result == null)
                 {
-                    ErrorMessage.ErrorNoAbort("retrieving best costumer","the database is empty/corrupted");
+                    ErrorMessage.ErrorNoAbort("retrieving best costumer", "the database is empty/corrupted");
                     break;
                 }
                 else
@@ -157,6 +179,11 @@ namespace WebshopMVC.ControllersAdmin
             return UserView.UserListReader(bestCostumer);
         }
 
+        /// <summary>
+        /// Gives a user administrator privileges.
+        /// User object as parameter for handling session timer and ping function.
+        /// </summary>
+        /// <param name="admin"></param>
         public static void PromoteUser(User admin)
         {
             bool isUserPromoted = false;
@@ -176,7 +203,7 @@ namespace WebshopMVC.ControllersAdmin
                 var result = api.Promote(admin.Id, userId);
                 if (result == false)
                 {
-                    var input = ErrorMessage.ErrorAbort("promoting a user","you entered incorrect data");
+                    var input = ErrorMessage.ErrorAbort("promoting a user", "you entered incorrect data");
                     if (input != "")
                     {
                         Console.Clear();
@@ -193,6 +220,11 @@ namespace WebshopMVC.ControllersAdmin
             } while (isUserPromoted == false);
         }
 
+        /// <summary>
+        /// Removes a user's administrator privileges.
+        /// User object as parameter for handling session timer and ping function.
+        /// </summary>
+        /// <param name="admin"></param>
         public static void DemoteUser(User admin)
         {
             bool isUserDemoted = false;
@@ -212,7 +244,7 @@ namespace WebshopMVC.ControllersAdmin
                 var result = api.Demote(admin.Id, userId);
                 if (result == false)
                 {
-                    var input = ErrorMessage.ErrorAbort("demoting a user","you entered incorrect data");
+                    var input = ErrorMessage.ErrorAbort("demoting a user", "you entered incorrect data");
                     if (input != "")
                     {
                         Console.Clear();
@@ -229,6 +261,11 @@ namespace WebshopMVC.ControllersAdmin
             } while (isUserDemoted == false);
         }
 
+        /// <summary>
+        /// Activates a user.
+        /// User object as parameter for handling session timer and ping function.
+        /// </summary>
+        /// <param name="admin"></param>
         public static void ActivateUser(User admin)
         {
             bool isUserActivated = false;
@@ -248,7 +285,7 @@ namespace WebshopMVC.ControllersAdmin
                 var result = api.ActivateUser(admin.Id, userId);
                 if (result == false)
                 {
-                    var input = ErrorMessage.ErrorAbort("activating a user","you entered incorrect data");
+                    var input = ErrorMessage.ErrorAbort("activating a user", "you entered incorrect data");
                     if (input != "")
                     {
                         Console.Clear();
@@ -265,6 +302,11 @@ namespace WebshopMVC.ControllersAdmin
             } while (isUserActivated == false);
         }
 
+        /// <summary>
+        /// Deactivates a user.
+        /// User object as parameter for handling session timer and ping function.
+        /// </summary>
+        /// <param name="admin"></param>
         public static void DeactivateUser(User admin)
         {
             bool isUserDeactivated = false;

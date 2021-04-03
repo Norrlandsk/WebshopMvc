@@ -105,14 +105,13 @@ namespace WebshopMVC.Controllers
                     }
                     else
                     {
-
                         BuyBookMessage.Success();
                         isBookPurchased = true;
                     }
                 }
-
-            } while (isBookPurchased==false);
+            } while (isBookPurchased == false);
         }
+
         public static string SendPing(int userId)
         {
             var api = new API();

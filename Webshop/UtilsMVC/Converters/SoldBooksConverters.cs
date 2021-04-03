@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using WebshopAPI.Models;
 
 namespace WebshopMVC.UtilsMVC.Converters
 {
+    /// <summary>
+    /// Class for converting List of SoldBook objects to List of List of base class objects.
+    /// </summary>
     public static class SoldBooksConverters
     {
+        /// <summary>
+        /// Converts List of SoldBook objects to List of List of base class objects.
+        /// </summary>
+        /// <param name="soldBooksList"></param>
+        /// <returns>List of List of base class objects</returns>
         public static List<List<object>> SoldBooksConverter(List<SoldBook> soldBooksList)
         {
             List<List<object>> soldBooksListData = new List<List<object>>();

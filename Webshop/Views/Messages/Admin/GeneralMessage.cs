@@ -1,11 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace WebshopMVC.Views.Messages.Admin
 {
-    class GeneralMessage
+    /// <summary>
+    /// Class for general messages.
+    /// </summary>
+    internal class GeneralMessage
     {
+        /// <summary>
+        /// Prints message for when Administrator is not logged in
+        /// </summary>
         public static void AdminNotLoggedIn()
         {
             Console.Clear();

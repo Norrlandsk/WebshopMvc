@@ -2,8 +2,14 @@
 
 namespace WebshopMVC.Views.Messages
 {
+    /// <summary>
+    /// Class for handling messages used in BuyBook method
+    /// </summary>
     internal class BuyBookMessage
     {
+        /// <summary>
+        /// Prints message when user is not logged in.
+        /// </summary>
         public static void UserNotLoggedIn()
         {
             Console.WriteLine("You have to be logged in to purchase a book!\n" +
@@ -11,6 +17,10 @@ namespace WebshopMVC.Views.Messages
             Prompts.ClearAndContinue();
         }
 
+        /// <summary>
+        /// Specialized error message when API.BuyBook method returns false.
+        /// </summary>
+        /// <returns>string</returns>
         public static string Error()
         {
             Console.Clear();
@@ -18,6 +28,10 @@ namespace WebshopMVC.Views.Messages
                 "or the book is out of stock. Are you sure you entered the correct book Id?");
             return Prompts.Abort();
         }
+
+        /// <summary>
+        /// Specialized success message when API.BuyBook method returns true.
+        /// </summary>
         public static void Success()
         {
             Console.Clear();

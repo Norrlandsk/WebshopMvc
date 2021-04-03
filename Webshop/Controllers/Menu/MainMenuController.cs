@@ -8,13 +8,24 @@ using WebshopMVC.UtilsMVC;
 
 namespace WebshopMVC.Controllers
 {
+    /// <summary>
+    /// Base menu class. Program flow starts and ends here.
+    /// </summary>
     internal class MainMenuController
     {
-        
-          public static bool isMainMenuRunning = true;
+        /// <summary>
+        /// Bool for creating while loop of Main Menu
+        /// </summary>
+        public static bool isMainMenuRunning = true;
+
+        /// <summary>
+        /// Main menu method. This is the center for the application, program flow starts and ends here.
+        /// User object as parameter for handling session timer and ping function.
+        /// Prints different menu's depending on user being logged in/logged out/have administrator privileges
+        /// </summary>
+        /// <param name="user"></param>
         public static void MainMenu(User user)
         {
-            
             while (isMainMenuRunning)
             {
                 UserController.SendPing(user.Id);
@@ -25,9 +36,12 @@ namespace WebshopMVC.Controllers
                 //If user is logged out
                 if (SessionTimer.CheckSessionTimer(user.SessionTimer) == true)
                 {
-
-                    
-                    PrintMenu();
+                    Console.WriteLine("[1] Browse books");
+                    Console.WriteLine("[2] Browse categories");
+                    Console.WriteLine("[3] Buy book\n\n");
+                    Console.WriteLine("[4] Register");
+                    Console.WriteLine("[5] Login");
+                    Console.WriteLine("[6] Quit application");
 
                     int.TryParse(Console.ReadLine(), out var mainMenuLoggedOutInput);
 
@@ -136,25 +150,5 @@ namespace WebshopMVC.Controllers
                 }
             }
         }
-
-        private static void PrintMenu()
-        {
-            Console.CursorLeft = 5;
-
-            List<string> menuLine = new List<string>() { "[1] Browse books", "[2] Browse categories", "[3] Buy book\n\n", "[4] Register", "[5] Login", "[6] Quit application" };
-            
-            foreach (var item in menuLine)
-            {
-                Console.CursorLeft = 5;
-                Console.WriteLine(item);
-            }
-            //Console.WriteLine("[1] Browse books");
-            //Console.WriteLine("[2] Browse categories");
-            //Console.WriteLine("[3] Buy book\n\n");
-            //Console.WriteLine("[4] Register");
-            //Console.WriteLine("[5] Login");
-            //Console.WriteLine("[6] Quit application");
-        }
-
     }
 }

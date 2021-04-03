@@ -5,10 +5,20 @@ using WebshopMVC.UtilsMVC;
 
 namespace WebshopMVC.Controllers.Menu
 {
+    /// <summary>
+    /// Class for handling choices of administrator functions
+    /// </summary>
     internal class AdminMenuController
     {
+        /// <summary>
+        /// Bool for creating while loop of Admin menu
+        /// </summary>
         public static bool isAdminMenuRunning = true;
 
+        /// <summary>
+        /// Admin main menu, Admin User object as parameter for handling session timer and ping function
+        /// </summary>
+        /// <param name="admin"></param>
         public static void AdminMainMenu(User admin)
         {
             isAdminMenuRunning = true;
@@ -50,6 +60,11 @@ namespace WebshopMVC.Controllers.Menu
             }
         }
 
+
+        /// <summary>
+        /// Admin book menu, Admin User object as parameter for handling session timer and ping function
+        /// </summary>
+        /// <param name="admin"></param>
         public static void AdminBookMenu(User admin)
         {
             bool isAdminBookMenuRunning = true;
@@ -113,7 +128,10 @@ namespace WebshopMVC.Controllers.Menu
                 }
             }
         }
-
+        /// <summary>
+        /// Admin category menu, Admin User object as parameter for handling session timer and ping function
+        /// </summary>
+        /// <param name="admin"></param>
         public static void AdminCategoryMenu(User admin)
         {
             bool isAdminCategoryMenuRunning = true;
@@ -167,7 +185,10 @@ namespace WebshopMVC.Controllers.Menu
                 }
             }
         }
-
+        /// <summary>
+        /// Admin user menu, Admin User object as parameter for handling session timer and ping function
+        /// </summary>
+        /// <param name="admin"></param>
         public static void AdminUserMenu(User admin)
         {
             bool isAdminUserMenuRunning = true;

@@ -1,13 +1,20 @@
 ﻿using ConsoleTableExt;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using WebshopMVC.Views.Messages;
 
 namespace WebshopMVC.Views
 {
-    class SoldBooksView
+    /// <summary>
+    /// View class for creating and printing table of SoldBook objects
+    /// </summary>
+    internal class SoldBooksView
     {
+        /// <summary>
+        /// Creates and prints SoldBook object table
+        /// </summary>
+        /// <param name="soldBooksData"></param>
+        /// <returns>List of List of base class objects</returns>
         public static List<List<object>> SoldBooksListReader(List<List<object>> soldBooksData)
         {
             Console.Clear();

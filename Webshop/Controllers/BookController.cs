@@ -6,8 +6,15 @@ using WebshopMVC.Views;
 
 namespace WebshopMVC.Controllers
 {
+    /// <summary>
+    /// Controller class for handling Book object data
+    /// </summary>
     public class BookController
     {
+        /// <summary>
+        /// Retrieves Book object based on Book.Id
+        /// </summary>
+        /// <returns>List of List of base class object</returns>
         public static List<List<object>> GetBookById()
         {
             Console.Clear();
@@ -20,6 +27,10 @@ namespace WebshopMVC.Controllers
             return BookView.BookListReader(bookData);
         }
 
+        /// <summary>
+        /// Retrieves Book object(s) based on search term matching Book.Title
+        /// </summary>
+        /// <returns>List of List of base class object</returns>
         public static List<List<object>> GetBooksByKeyword()
         {
             Console.Clear();
@@ -32,6 +43,10 @@ namespace WebshopMVC.Controllers
             return BookView.BookListReader(bookListData);
         }
 
+        /// <summary>
+        /// Retrieves all present Book objects in database
+        /// </summary>
+        /// <returns>List of List of base class object</returns>
         public static List<List<object>> ListAllBooks()
         {
             Console.Clear();
@@ -42,6 +57,10 @@ namespace WebshopMVC.Controllers
             return BookView.BookListReader(bookListData);
         }
 
+        /// <summary>
+        /// Retrieves Book object(s) based on search term matching Book.Author
+        /// </summary>
+        /// <returns>List of List of base class object</returns>
         public static List<List<object>> GetBooksByAuthor()
         {
             Console.Clear();

@@ -3,8 +3,14 @@ using WebshopMVC.UtilsMVC;
 
 namespace WebshopMVC.Controllers.Menu
 {
+    /// <summary>
+    /// Menu class for handling category data, no login required
+    /// </summary>
     internal class CategoryMenuController
     {
+        /// <summary>
+        /// Menu for handling category data
+        /// </summary>
         public static void CategoryMenu()
         {
             bool isCategoryMenuRunning = true;

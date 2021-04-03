@@ -11,8 +11,16 @@ using WebshopMVC.Views.Messages.Admin;
 
 namespace WebshopMVC.ControllersAdmin
 {
+    /// <summary>
+    /// Admin menu class for handling Book object data
+    /// </summary>
     internal class AdminBookController
     {
+        /// <summary>
+        /// Adds a new book to database
+        /// User object as parameter for handling session timer and ping function
+        /// </summary>
+        /// <param name="admin"></param>
         public static void AddBookToInventory(User admin)
         {
             bool isBookAdded = false;
@@ -58,6 +66,11 @@ namespace WebshopMVC.ControllersAdmin
             } while (isBookAdded == false);
         }
 
+        /// <summary>
+        /// Sets Book objects Amount
+        /// User object as parameter for handling session timer and ping function
+        /// </summary>
+        /// <param name="admin"></param>
         public static void SetAmount(User admin)
         {
             bool isAmountSet = false;
@@ -81,7 +94,7 @@ namespace WebshopMVC.ControllersAdmin
                 var result = api.SetAmount(admin.Id, bookId, amount);
                 if (result.isAmountSet == false)
                 {
-                    var input = ErrorMessage.ErrorAbort("setting the amount","you entered incorrect data");
+                    var input = ErrorMessage.ErrorAbort("setting the amount", "you entered incorrect data");
                     if (input != "")
                     {
                         Console.Clear();
@@ -90,13 +103,18 @@ namespace WebshopMVC.ControllersAdmin
                 }
                 else
                 {
-                    SuccessMessage.SuccessWithInt("Amount set to",result.amount);
+                    SuccessMessage.SuccessWithInt("Amount set to", result.amount);
                     isAmountSet = true;
                     UserController.SendPing(admin.Id);
                 }
             } while (isAmountSet == false);
         }
 
+        /// <summary>
+        /// Updates a Book objects properties
+        /// User object as parameter for handling session timer and ping function
+        /// </summary>
+        /// <param name="admin"></param>
         public static void UpdateBook(User admin)
         {
             bool isBookUpdated = false;
@@ -126,7 +144,7 @@ namespace WebshopMVC.ControllersAdmin
                 var result = api.UpdateBook(admin.Id, bookId, title, author, price);
                 if (result == false)
                 {
-                    var input = ErrorMessage.ErrorAbort("updating the book","you entered incorrect data");
+                    var input = ErrorMessage.ErrorAbort("updating the book", "you entered incorrect data");
                     if (input != "")
                     {
                         Console.Clear();
@@ -142,6 +160,11 @@ namespace WebshopMVC.ControllersAdmin
             } while (isBookUpdated == false);
         }
 
+        /// <summary>
+        /// Deletes one(1) Book object from database
+        /// User object as parameter for handling session timer and ping function
+        /// </summary>
+        /// <param name="admin"></param>
         public static void DeleteBook(User admin)
         {
             bool isBookDeleted = false;
@@ -162,7 +185,7 @@ namespace WebshopMVC.ControllersAdmin
                 var result = api.DeleteBook(admin.Id, bookId);
                 if (result == false)
                 {
-                    var input = ErrorMessage.ErrorAbort("deleting the book","you entered incorrect data");
+                    var input = ErrorMessage.ErrorAbort("deleting the book", "you entered incorrect data");
                     if (input != "")
                     {
                         Console.Clear();
@@ -178,6 +201,11 @@ namespace WebshopMVC.ControllersAdmin
             } while (isBookDeleted == false);
         }
 
+        /// <summary>
+        /// Retrieves list of all SoldBook objects present in database
+        /// User object as parameter for handling session timer and ping function
+        /// </summary>
+        /// <param name="admin"></param>
         public static List<List<object>> ListAllSoldBooks(User admin)
         {
             List<List<object>> soldBooksListData = new List<List<object>>();
@@ -197,7 +225,7 @@ namespace WebshopMVC.ControllersAdmin
                 var result = api.SoldItems(admin.Id);
                 if (result == null)
                 {
-                    ErrorMessage.ErrorNoAbort("retrieving the list of sold books","the database is corrupt/empty");
+                    ErrorMessage.ErrorNoAbort("retrieving the list of sold books", "the database is corrupt/empty");
                 }
                 else
                 {
@@ -209,9 +237,13 @@ namespace WebshopMVC.ControllersAdmin
             return SoldBooksView.SoldBooksListReader(soldBooksListData);
         }
 
+        /// <summary>
+        /// Calculates sum of all SoldBook objects based on SoldBook.Price
+        /// User object as parameter for handling session timer and ping function
+        /// </summary>
+        /// <param name="admin"></param>
         public static void SumOfSoldBooks(User admin)
         {
-
             bool isSumCalculated = false;
             do
             {
@@ -228,16 +260,15 @@ namespace WebshopMVC.ControllersAdmin
                 var result = api.MoneyEarned(admin.Id);
                 if (result == null)
                 {
-                    ErrorMessage.ErrorNoAbort("calculating the sum of all purchases","the database is corrupt/empty");
+                    ErrorMessage.ErrorNoAbort("calculating the sum of all purchases", "the database is corrupt/empty");
                 }
                 else
                 {
-                    SuccessMessage.SuccessWithInt("The sum of all purchases is",result.Value);
+                    SuccessMessage.SuccessWithInt("The sum of all purchases is", result.Value);
                     UserController.SendPing(admin.Id);
                     isSumCalculated = true;
                 }
             } while (isSumCalculated == false);
-            
         }
     }
 }

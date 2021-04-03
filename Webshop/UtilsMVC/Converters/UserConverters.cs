@@ -3,8 +3,16 @@ using WebshopAPI.Models;
 
 namespace WebshopMVC.UtilsMVC.Converters
 {
+    /// <summary>
+    /// Class for converting List of User objects to List of List of base class objects.
+    /// </summary>
     internal class UserConverters
     {
+        /// <summary>
+        /// Converts List of User objects to List of List of base class objects.
+        /// </summary>
+        /// <param name="userList"></param>
+        /// <returns>List of List of base class objects</returns>
         public static List<List<object>> UserConverter(List<User> userList)
         {
             List<List<object>> userListData = new List<List<object>>();
@@ -15,6 +23,11 @@ namespace WebshopMVC.UtilsMVC.Converters
             return userListData;
         }
 
+        /// <summary>
+        /// Converts a User object to List of List of base class objects.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns>List of List of base class objects</returns>
         public static List<List<object>> UserConverter(User user)
         {
             List<List<object>> userData = new List<List<object>>()
