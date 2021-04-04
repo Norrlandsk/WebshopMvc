@@ -6,7 +6,8 @@ using WebshopMVC.Views.Messages;
 namespace WebshopMVC.Views
 {
     /// <summary>
-    /// View class for creating and printing table of User objects
+    /// View class for creating and printing table of User objects. NuGet ConsoleTablesExt used.
+    /// NuGet repository: https://github.com/minhhungit/ConsoleTableExt/
     /// </summary>
     internal class UserView
     {
@@ -19,9 +20,12 @@ namespace WebshopMVC.Views
         {
             if (userData.Count > 0)
             {
-                Console.Clear();
-                ConsoleTableBuilder.From(userData).WithTitle("Users", ConsoleColor.Yellow, ConsoleColor.Black)
-                    .WithColumn("Id   ", "Name   ", "Password   ", "Last login   ", "Sessiontimer   ", "Is active   ", "Is admin   ").WithFormat(ConsoleTableBuilderFormat.Minimal).ExportAndWriteLine();
+                Console.WriteLine();
+                ConsoleTableBuilder.From(userData)
+                   .WithCharMapDefinition(CharMapDefinition.FramePipDefinition)
+                   .WithTitle("Users", ConsoleColor.Black, ConsoleColor.White, TextAligntment.Center)
+                   .WithColumn("Id", "Name", "Password", "Last login", "Sessiontimer", "Is active","IsAdmin")
+                   .ExportAndWriteLine(TableAligntment.Center);
                 Prompts.ClearAndContinue();
             }
             return userData;

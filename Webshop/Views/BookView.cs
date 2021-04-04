@@ -6,7 +6,8 @@ using WebshopMVC.Views.Messages;
 namespace WebshopMVC.Views
 {
     /// <summary>
-    /// View class for creating and printing table of Book objects
+    /// View class for creating and printing table of Book objects. NuGet ConsoleTablesExt used.
+    /// NuGet repository: https://github.com/minhhungit/ConsoleTableExt/
     /// </summary>
     internal class BookView
     {
@@ -18,8 +19,12 @@ namespace WebshopMVC.Views
         public static List<List<object>> BookListReader(List<List<object>> bookData)
         {
             Console.Clear();
-            ConsoleTableBuilder.From(bookData).WithTitle("Books", ConsoleColor.Yellow, ConsoleColor.Black)
-                .WithColumn("Id   ", "Title   ", "Author   ", "Price   ", "Amount   ", "Category Id   ").WithFormat(ConsoleTableBuilderFormat.Minimal).ExportAndWriteLine();
+            Console.WriteLine();
+            ConsoleTableBuilder.From(bookData)
+               .WithCharMapDefinition(CharMapDefinition.FramePipDefinition)
+               .WithTitle("Books", ConsoleColor.Black, ConsoleColor.White, TextAligntment.Center)
+               .WithColumn("Id", "Title", "Author", "Price", "Amount", "Category Id")
+               .ExportAndWriteLine(TableAligntment.Center);
             Prompts.ClearAndContinue();
             return bookData;
         }

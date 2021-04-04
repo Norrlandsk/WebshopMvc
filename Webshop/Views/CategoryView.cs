@@ -6,7 +6,8 @@ using WebshopMVC.Views.Messages;
 namespace WebshopMVC.Views
 {
     /// <summary>
-    /// View class for creating and printing table of Category objects
+    /// View class for creating and printing table of Category objects. NuGet ConsoleTablesExt used.
+    /// NuGet repository: https://github.com/minhhungit/ConsoleTableExt/
     /// </summary>
     internal class CategoryView
     {
@@ -18,8 +19,12 @@ namespace WebshopMVC.Views
         public static List<List<object>> CategoryListReader(List<List<object>> categoryData)
         {
             Console.Clear();
-            ConsoleTableBuilder.From(categoryData).WithTitle("Categories", ConsoleColor.Yellow, ConsoleColor.Black)
-                .WithColumn("Id   ", "Name   ").WithFormat(ConsoleTableBuilderFormat.Minimal).ExportAndWriteLine();
+            Console.WriteLine();
+            ConsoleTableBuilder.From(categoryData)
+               .WithCharMapDefinition(CharMapDefinition.FramePipDefinition)
+               .WithTitle("Categories", ConsoleColor.Black, ConsoleColor.White, TextAligntment.Center)
+               .WithColumn("Id", "Name")
+               .ExportAndWriteLine(TableAligntment.Center);
             Prompts.ClearAndContinue();
             return categoryData;
         }
