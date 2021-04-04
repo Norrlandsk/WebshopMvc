@@ -22,7 +22,8 @@ namespace WebshopMVC.Controllers
             Console.Write("Enter book Id:");
             int.TryParse(Console.ReadLine(), out var input);
             var book = api.GetBook(input);
-            var bookData = BookConverters.BookConverter(book);
+
+              var  bookData = BookConverters.BookConverter(book);
 
             return BookView.BookListReader(bookData);
         }

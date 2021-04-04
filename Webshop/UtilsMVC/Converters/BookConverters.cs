@@ -30,10 +30,17 @@ namespace WebshopMVC.UtilsMVC
         /// <returns>List of List of base class objects</returns>
         public static List<List<object>> BookConverter(Book book)
         {
-            List<List<object>> bookData = new List<List<object>>()
-            {new List<object>() { book.Id, book.Title, book.Author, book.Price, book.Amount, book.CategoryId } };
+            List<List<object>> bookData = new List<List<object>>();
+            if (book != null)
+            {
+                { new List<object>() { book.Id, book.Title, book.Author, book.Price, book.Amount, book.CategoryId }; }
 
-            return bookData;
+                return bookData;
+            }
+            else
+            {
+                return bookData;
+            }
         }
     }
 }
